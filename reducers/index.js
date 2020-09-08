@@ -9,6 +9,7 @@ import {
   export default function deck (state = {}, action) {
 
     switch (action.type) {
+
       case ADD_DECK :
         const newDeck = {
           [action.deck] : {
@@ -40,6 +41,7 @@ import {
       default :
         return state
     }
+    
   }
 
   // REMOVE_DECK,

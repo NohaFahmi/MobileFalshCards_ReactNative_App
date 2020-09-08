@@ -1,7 +1,7 @@
 import { AsyncStorage } from 'react-native'
 import { decksData } from './_DATA'
 
-const FLASHCARDS_STORAGE_KEY = 'MobileFlashcards:decks'
+const FLASHCARDS_STORAGE_KEY = 'MobileFlashcards: decks'
 
 export const getInitialData = () => {
   //a func to return all of the decks along with their titles, questions, and answers.

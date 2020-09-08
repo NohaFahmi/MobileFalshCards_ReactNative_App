@@ -1,9 +1,6 @@
 import { AsyncStorage } from 'react-native'
 import { decksData } from './_DATA'
 
-import { AsyncStorage } from 'react-native';
-import {decksData} from './_DATA'
-
 const FLASHCARDS_STORAGE_KEY = 'MobileFlashcards:decks'
 
 export const getInitialData = () => {

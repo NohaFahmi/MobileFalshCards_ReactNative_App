@@ -7,6 +7,8 @@ import DeckView from './DeckView'
 import DeckList from './DecksList'
 import AddCard from './AddCard'
 import TabNav from './TabNav';
+import Quiz from './Quiz';
+
 
 import {blue, nile, orange, yellow, white} from '../utils/colors'
 
@@ -26,7 +28,7 @@ export default function StackNav() {
               options={
                 {title: 'Decks'}
                 
-                }
+              }
             />
   
             <Stack.Screen 
@@ -50,7 +52,20 @@ export default function StackNav() {
                 {headerStyle: {
                   backgroundColor: blue
                 }}
-                } 
+              } 
+
+            />
+
+            <Stack.Screen 
+              name='Quiz'
+              component={Quiz}
+              options={
+                {title: 'Quiz'}, 
+                {headerTintColor: white},
+                {headerStyle: {
+                  backgroundColor: blue
+                }}
+              } 
 
             />
           </Stack.Navigator>

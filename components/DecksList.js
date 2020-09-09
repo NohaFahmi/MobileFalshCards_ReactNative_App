@@ -36,7 +36,6 @@ class DeckList extends Component {
                                 title ="view deck"
                                 style={styles.cardBtn}
                             >
-
                             </Button>
                         </View>
                     )

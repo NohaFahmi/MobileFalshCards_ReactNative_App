@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import Constants from 'expo-constants';
 import { NavigationContainer } from '@react-navigation/native'
-
+import { setLocalNotification } from './utils/helpers'
 import reducer from './reducers'
 
 import TabNav from './components/TabNav';
@@ -26,13 +26,18 @@ function AppStatusBar({backgroundColor, ...props}) {
 }
 
 export default class App extends Component {
+
+  componentDidMount() {
+
+    setLocalNotification()
+    
+  }
   render () {
     return (
       <Provider store={createStore(reducer)}>
         <AppStatusBar 
             backgroundColor={blue} 
             barStyle='light-content'
-
         />
         <NavigationContainer>
         

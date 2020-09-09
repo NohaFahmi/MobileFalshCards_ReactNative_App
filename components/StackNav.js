@@ -5,7 +5,10 @@ import { NavigationContainer } from '@react-navigation/native'
 import AddDeck from './AddDeck'
 import DeckView from './DeckView'
 import DeckList from './DecksList'
+import AddCard from './AddCard'
 import TabNav from './TabNav';
+
+import {blue, nile, orange, yellow, white} from '../utils/colors'
 
 
 
@@ -20,13 +23,35 @@ export default function StackNav() {
             <Stack.Screen 
               name='Home'
               component={TabNav}
-              options={{title: 'Decks'}}
+              options={
+                {title: 'Decks'}
+                
+                }
             />
   
             <Stack.Screen 
               name='DeckView'
               component={DeckView}
-              options={{title: 'DeckView'}}
+              options={
+                {title: 'DeckView'},
+                {headerTintColor: white},
+                {headerStyle: {
+                  backgroundColor: nile
+                }}
+                }
+            />
+
+            <Stack.Screen 
+              name='AddCard'
+              component={AddCard}
+              options={
+                {title: 'Add Card'}, 
+                {headerTintColor: white},
+                {headerStyle: {
+                  backgroundColor: blue
+                }}
+                } 
+
             />
           </Stack.Navigator>
       )

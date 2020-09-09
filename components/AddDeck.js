@@ -4,6 +4,7 @@ import {saveDeckTitle} from '../utils/api'
 import {addDeck} from '../actions/index'
 import { connect } from 'react-redux'
 import {orange, yellow, white} from '../utils/colors'
+import SubmitBtn from './SubmitBtns'
 
 class AddDeck extends Component {
 
@@ -30,14 +31,12 @@ class AddDeck extends Component {
                 >
 
                 </TextInput>
-                <Button 
-                    style={styles.submitBtn}
-                    onPress={this.submitName}
-                    title="Submit"
-                    
-                >
 
-                </Button>
+                <SubmitBtn 
+                    style={styles.submitBtn}
+                    onPress={(this.submitName)}
+                />
+                
             </View>
         )
     }
@@ -61,7 +60,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 30,
         color: orange,
-        fontWeight: 700,
+        fontWeight: '700',
     },
     submitBtn: {
         borderWidth: 1,
@@ -71,6 +70,7 @@ const styles = StyleSheet.create({
         borderRadius: 7,
         overflow: 'hidden',
         color: white,
+        backgroundColor: orange,
         // backgroundColor: yellow,
     }
 })

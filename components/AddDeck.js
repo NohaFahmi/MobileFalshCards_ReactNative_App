@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 30,
         color: orange,
+        fontWeight: 700,
     },
     submitBtn: {
         borderWidth: 1,
@@ -69,8 +70,8 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 7,
         overflow: 'hidden',
-        backgroundColor: yellow,
         color: white,
+        // backgroundColor: yellow,
     }
 })
 

@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { getDecks } from '../utils/api'
 import { receiveDecks } from './../actions/index'
 import { nile, white } from '../utils/colors'
+import {getCardsLength} from '../utils/helpers'
 
 class DeckList extends Component {
 
@@ -29,7 +30,7 @@ class DeckList extends Component {
                     return (
                         <View key={deck} style={styles.card}>
                             <Text style={styles.cardText}>{title}</Text>
-                            <Text style={styles.cardText}>{questions.length}</Text>
+                            <Text style={styles.cardText}>{questions ? getCardsLength(questions) : null }</Text>
                             <Button
                                 onPress={() => this.props.navigation.navigate('DeckView', {entryId: deck})}
                                 title ="view deck"

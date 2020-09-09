@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 
 import ActionBtn from './ActionBtns'
 import { white, orange, yellow, blue, nile } from '../utils/colors'
+import {getCardsLength} from '../utils/helpers'
+
 
 class DeckView extends Component {
     render() {
@@ -13,13 +15,14 @@ class DeckView extends Component {
         // const decks = getInitialData()
         const {decks} = this.props
         // console.log(deck)
+        const cards = decks[deck].questions
 
         return (
 
             <View style={styles.container}>
                 <View style={styles.card}>
                     <Text style={styles.title}>{decks[deck].title} </Text>
-                    <Text style={styles.subTitle}>{decks[deck].questions.length} </Text>
+                    <Text style={styles.subTitle}>{cards ? getCardsLength(cards) : null} </Text>
 
                     <ActionBtn 
                         styles={styles} 

@@ -17,21 +17,23 @@ class DeckView extends Component {
         return (
 
             <View style={styles.container}>
-                <Text>{decks[deck].title} </Text>
-                <Text>{decks[deck].questions.length} </Text>
+                <View style={styles.card}>
+                    <Text style={styles.title}>{decks[deck].title} </Text>
+                    <Text style={styles.subTitle}>{decks[deck].questions.length} </Text>
 
-                <ActionBtn 
-                    styles={styles} 
-                    text={'Add Card'}  
-                    onPress={() => this.props.navigation.navigate('AddCard', {entryId: deck})}
-                    color={orange}
-                />
-                <ActionBtn 
-                    styles={styles} 
-                    text={'Start Quiz'}  
-                    onPress={() => this.props.navigation.navigate('Quiz', {entryId: deck})}
-                    color={blue}
-                />
+                    <ActionBtn 
+                        styles={styles} 
+                        text={'Add Card'}  
+                        onPress={() => this.props.navigation.navigate('AddCard', {entryId: deck})}
+                        color={orange}
+                    />
+                    <ActionBtn 
+                        styles={styles} 
+                        text={'Start Quiz'}  
+                        onPress={() => this.props.navigation.navigate('Quiz', {entryId: deck})}
+                        color={blue}
+                    />
+                </View>
             </View>
         )
     }
@@ -41,7 +43,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignSelf: 'stretch'
     },
     btn: {
         padding: 10,
@@ -54,6 +56,34 @@ const styles = StyleSheet.create({
         color: white,
         fontSize: 22,
         textAlign: 'center'
+    },
+    card: {
+
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: nile,
+        margin: 8,
+        
+        height: 200,
+        borderRadius: 10,
+        shadowColor: '#C7C7A9',
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowRadius: 4,
+        shadowOpacity: 1,  
+    },
+    title: {
+        
+        fontSize: 40,
+        color: white,
+    },
+    subTitle: {
+        fontSize: 30,
+        color: white,
+        marginBottom: 160,
     }
 })
 

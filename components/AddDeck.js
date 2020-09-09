@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         color: orange,
         fontWeight: '700',
+        textAlign: 'center'
     },
     submitBtn: {
         borderWidth: 1,

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, Button } from 'react-native'
+import { StyleSheet, Text, View, Button, ScrollView } from 'react-native'
 // import { getInitialData } from './../utils/api'
 import { connect } from 'react-redux'
 import { getDecks } from '../utils/api'
@@ -23,7 +23,7 @@ class DeckList extends Component {
         console.log(decks)
         return (
 
-            <View style={styles.container}>
+            <ScrollView>
                 {Object.keys(decks).map((deck) => {
 
                     const {title, questions} = decks[deck]
@@ -41,7 +41,7 @@ class DeckList extends Component {
                         </View>
                     )
                 })}
-            </View>
+            </ScrollView>
         )
     }
 }

@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import { CommonActions } from '@react-navigation/native'
-import Animated from 'react-native-reanimated'
 import { connect } from 'react-redux'
 import {
     StyleSheet, 
@@ -23,7 +22,6 @@ class Quiz extends Component {
         showQuestion: false,
         correct: 0,
         incorrect: 0,
-        animation: new Animated.Value(0.5)
     }
 
     showAnswer = () => {
@@ -39,7 +37,7 @@ class Quiz extends Component {
         const correct = decks[deck].questions[questionNum].correctAnswer.toLowerCase()
 
         //1. check if answer is correct
-        if(answer.true === correct.trim()) {
+        if(answer === correct) {
             this.setState({ correct: this.state.correct + 1})
         } else {
             this.setState({ incorrect: this.state.incorrect + 1 })
@@ -50,23 +48,10 @@ class Quiz extends Component {
             showQuestion: false
         })
 
-        //3. show animation
-        this.animationHandle()
+        
     }
 
-    animationHandle = () => {
-        Animated.spring(this.state.animation, {
-            translate: 2,
-            friction: 2,
-            tension: 360,
-            duration: 1000,
-        }).start(() => {
-            Animated.spring(this.state.animation, {
-                toValue: 1,
-                duration: 100,
-            }).start()
-        })
-    }
+
 
     startOver = () => {
         this.setState({
@@ -87,20 +72,15 @@ class Quiz extends Component {
         const num = this.state.questionNum + 1
         const questionNum = this.state.questionNum
 
-        const animatedStyle = {
-            transform: [
-                { scale: this.state.animation }
-            ]
-
-        }
+        
 
         if(questionNum === decks[deck].questions.length) {
             return (
                 <View style={styles.container}  >
                     <View style={styles.card}>
-                      <Animated.View style={animatedStyle}>
+                      <View>
                         <Text style={styles.mainTitle}> You Got {this.state.correct} out of {decks[deck].questions.length}! </Text>
-                      </Animated.View>
+                      </View>
                         
 
                         {
@@ -180,7 +160,7 @@ const styles = StyleSheet.create({
         backgroundColor: nile,
         alignSelf: 'stretch',
         borderRadius: 10,
-        shadowColor: 'rgba(0,0,0,0,34)',
+        shadowColor: 'grey',
         shadowOffset: {
             width: 0,
             height: 3,

@@ -2,7 +2,9 @@
 import React, {Component} from 'react'
 import { StyleSheet, Text, View, StatusBar } from 'react-native'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware  } from 'redux'
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 import Constants from 'expo-constants';
 import { NavigationContainer } from '@react-navigation/native'
 import { setLocalNotification } from './utils/helpers'
@@ -12,6 +14,12 @@ import TabNav from './components/TabNav';
 import StackNav from './components/StackNav';
 
 import {blue} from './utils/colors'
+
+
+const store = createStore(
+    reducer, 
+    applyMiddleware(thunk, logger)
+  )
 
 function AppStatusBar({backgroundColor, ...props}) {
   return (
@@ -34,13 +42,13 @@ export default class App extends Component {
   }
   render () {
     return (
-      <Provider store={createStore(reducer)}>
-        <AppStatusBar 
-            backgroundColor={blue} 
-            barStyle='light-content'
-        />
-        <NavigationContainer>
+      <Provider store={store}>
         
+        <NavigationContainer>
+          <AppStatusBar 
+            backgroundColor={blue }
+            barStyle='light-content'
+          />
           <StackNav />
         </NavigationContainer>
 

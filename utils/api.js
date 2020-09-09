@@ -39,7 +39,7 @@ export function saveDeckTitle(title) {
       FLASHCARDS_STORAGE_KEY, 
       JSON.stringify({
       [title]: {
-        title,
+        title: title,
         questions: [],
       }
     }))

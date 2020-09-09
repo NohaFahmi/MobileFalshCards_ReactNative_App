@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import { CommonActions } from '@react-navigation/native';
+import { CommonActions } from '@react-navigation/native'
+import Animated from 'react-native-reanimated'
 import { connect } from 'react-redux'
 import {
     StyleSheet, 
@@ -22,6 +23,7 @@ class Quiz extends Component {
         showQuestion: false,
         correct: 0,
         incorrect: 0,
+        animation: new Animated.Value(0.5)
     }
 
     showAnswer = () => {
@@ -37,7 +39,7 @@ class Quiz extends Component {
         const correct = decks[deck].questions[questionNum].correctAnswer.toLowerCase()
 
         //1. check if answer is correct
-        if(answer === correct) {
+        if(answer.true === correct.trim()) {
             this.setState({ correct: this.state.correct + 1})
         } else {
             this.setState({ incorrect: this.state.incorrect + 1 })
@@ -49,6 +51,34 @@ class Quiz extends Component {
         })
 
         //3. show animation
+        this.animationHandle()
+    }
+
+    animationHandle = () => {
+        Animated.spring(this.state.animation, {
+            translate: 2,
+            friction: 2,
+            tension: 360,
+            duration: 1000,
+        }).start(() => {
+            Animated.spring(this.state.animation, {
+                toValue: 1,
+                duration: 100,
+            }).start()
+        })
+    }
+
+    startOver = () => {
+        this.setState({
+            questionNum: 0,
+            showQuestion: false,
+            correct: 0,
+            incorrect: 0
+        })
+    }
+
+    goBack = () => {
+        this.props.navigation.dispatch(CommonActions.goBack())
     }
     render() {
 
@@ -57,11 +87,21 @@ class Quiz extends Component {
         const num = this.state.questionNum + 1
         const questionNum = this.state.questionNum
 
+        const animatedStyle = {
+            transform: [
+                { scale: this.state.animation }
+            ]
+
+        }
+
         if(questionNum === decks[deck].questions.length) {
             return (
-                <View style={styles.container}>
+                <View style={styles.container}  >
                     <View style={styles.card}>
-                       <Text style={styles.mainTitle}> You Got {this.state.correct} out of {decks[deck].questions.length}! </Text> 
+                      <Animated.View style={animatedStyle}>
+                        <Text style={styles.mainTitle}> You Got {this.state.correct} out of {decks[deck].questions.length}! </Text>
+                      </Animated.View>
+                        
 
                         {
                             this.state.correct > this.state.incorrect ? 
@@ -69,9 +109,23 @@ class Quiz extends Component {
                             : 
                             <Text style={{fontSize: 90}}>😭😭😭</Text>
                         }
+                        <View>
+                            <ActionBtn 
+                                styles={styles} 
+                                text={'StartOver'} 
+                                color={nile}
+                                onPress={this.startOver}
 
-                        <ActionBtn styles={styles} text={'TryAgain'} color={nile}/>
-                        <ActionBtn styles={styles} text={'Back'} color={blue}/>
+                            />
+                            <ActionBtn 
+                                styles={styles} 
+                                text={'Back'} 
+                                color={blue}
+                                onPress={this.goBack}
+
+                            />
+                        </View>
+                        
                     </View>
                 </View>
             )
@@ -101,8 +155,11 @@ class Quiz extends Component {
                         <QuizInfo style={styles.answer} text={'Show Question'} onPress={this.showAnswer}></QuizInfo>
                         
                     }
+                    <View>
                     <ActionBtn text={'Correct'} styles={styles} onPress={() => this.submitAns('true')} />
                     <ActionBtn text={'Incorrect'} styles={styles} onPress={() => this.submitAns('false')} />
+                    </View>
+                    
                 </View>
             </View>
         )

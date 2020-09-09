@@ -26,11 +26,13 @@ class AddCard extends Component {
     submitCard = (deck) => {
 
         const { question, answer, correctAnswer } = this.state
-        this.props.dispatch(addCard({ question, answer, correctAnswer, deck }))
-
+        if(question && answer) {
+            this.props.dispatch(addCard({ question, answer, correctAnswer, deck }))
         addCardToDeck(deck, {question, answer, correctAnswer})
         this.setState({ question: '', answer: '', correctAnswer: ''})
         this.props.navigation.dispatch(CommonActions.goBack())
+        }
+
     }
     
     render() {

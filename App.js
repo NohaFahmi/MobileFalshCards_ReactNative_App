@@ -1,6 +1,6 @@
 // import { StatusBar } from 'expo-status-bar'
 import React, {Component} from 'react'
-import { StyleSheet, Text, View, StatusBar } from 'react-native'
+import { StyleSheet, Text, View, StatusBar, Platform } from 'react-native'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware  } from 'redux'
 import thunk from 'redux-thunk';
@@ -36,7 +36,10 @@ export default class App extends Component {
 
   componentDidMount() {
 
-    setLocalNotification()
+    if(Platform.OS === "ios" || Platform.OS === "android") {
+      setLocalNotification()
+    }
+    
     
   }
   render () {

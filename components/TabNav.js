@@ -3,9 +3,8 @@ import React, {Component} from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import {Ionicons} from '@expo/vector-icons'
 
-import {blue, white, nile} from '../utils/colors'
+import {lightGreen, darkGreen} from '../utils/colors'
 import AddDeck from './AddDeck'
-import DeckView from './DeckView'
 import DeckList from './DecksList'
 
 
@@ -33,8 +32,8 @@ export default class TabNav extends Component {
                 },
                 })}
                 tabBarOptions={{
-                activeTintColor: blue,
-                inactiveTintColor: nile,
+                    activeTintColor: lightGreen,
+                    inactiveTintColor: darkGreen,
                 }}
             >
             <Tab.Screen name="Decks" component={DeckList} />

@@ -1,19 +1,19 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { CommonActions } from '@react-navigation/native';
-import {blue, nile, orange, yellow, white} from '../utils/colors'
+import {blue, nile, orange, yellow, white, red, darkGreen, lightBlue, dark} from '../utils/colors'
 import { addCardToDeck } from '../utils/api'
 import { addCard } from '../actions/index'
 import { 
     View, 
     StyleSheet, 
-    TouchableOpacity, 
     TextInput, 
     KeyboardAvoidingView, 
     Text 
 } from 'react-native';
 
 import SubmitBtn from './SubmitBtns' 
+import { lightGreen } from './../utils/colors';
 
 class AddCard extends Component {
     
@@ -40,7 +40,7 @@ class AddCard extends Component {
         const deckName = this.props.route.params.entryId
 
         return (
-            <KeyboardAvoidingView behavior='padding' style={styles.container}>
+            <KeyboardAvoidingView style={styles.container}>
 
                 <View style={styles.container}>
                     <Text style={styles.title}>What is the question</Text>
@@ -63,12 +63,14 @@ class AddCard extends Component {
                         onChangeText={(correctAnswer) => this.setState({correctAnswer})}
                         value={this.state.correctAnswer}
                     ></TextInput>
+                    
+                        <SubmitBtn 
+                            onPress={() => this.submitCard(deckName)}
+                            style={styles.submitBtn}
 
-                    <SubmitBtn 
-                        onPress={() => this.submitCard(deckName)}
-                        style={styles.submitBtn}
-
-                    />
+                        />
+                
+                    
                 </View>
 
             </KeyboardAvoidingView>
@@ -89,23 +91,28 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 30,
-        color: orange,
+        color: lightBlue,
+        fontWeight: 'bold',
     },
     submitBtn: {
-        borderWidth: 0.5,
-        borderColor: orange,
+        textAlign: 'center',
+        borderColor: darkGreen,
         padding: 10,
-        backgroundColor: orange,
+        backgroundColor: lightGreen,
         borderRadius: 7,
         overflow: 'hidden',
-        color: white
+        color: white,
+        borderRadius: 7,
+        height: 50,
+        width: 170,
+        // margin: 10,
     },
     input: {
         width: 250,
         height: 40,
         padding: 8,
         borderWidth: 1,
-        borderColor: yellow,
+        borderColor: dark,
         margin: 20,
         borderRadius: 7,
     }

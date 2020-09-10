@@ -1,5 +1,6 @@
 import React from 'react'
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { white, offWhite } from '../utils/colors';
 
 export default function SubmitBtn({onPress, style}) {
     return (
@@ -7,7 +8,16 @@ export default function SubmitBtn({onPress, style}) {
             style={style} 
             onPress={onPress}
         >
-            <Text style={style}>Submit</Text>
+            <Text style={styles.text}>Submit</Text>
         </TouchableOpacity>
     )
 }
+
+const styles = StyleSheet.create({
+    text: {
+        textAlign: 'center',
+        color: offWhite,
+        fontSize: 20,
+        fontWeight: 'bold'
+    }
+})

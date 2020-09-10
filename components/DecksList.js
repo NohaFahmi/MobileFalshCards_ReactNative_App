@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, Button, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native'
 // import { getInitialData } from './../utils/api'
 import { connect } from 'react-redux'
 import { getDecks } from '../utils/api'
 import { receiveDecks } from './../actions/index'
-import { nile, white } from '../utils/colors'
+import { nile, white, beige, offWhite, lightBlue, red, darkGreen} from '../utils/colors'
 import {getCardsLength} from '../utils/helpers'
+import { lightOrange, lightGreen } from './../utils/colors';
 
 class DeckList extends Component {
 
@@ -29,14 +30,15 @@ class DeckList extends Component {
                     const {title, questions} = decks[deck]
                     return (
                         <View key={deck} style={styles.card}>
-                            <Text style={styles.cardText}>{title}</Text>
+                            <Text style={styles.cardHeader}>{title}</Text>
                             <Text style={styles.cardText}>{questions ? getCardsLength(questions) : null }</Text>
-                            <Button
+                            <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate('DeckView', {entryId: deck})}
-                                title ="view deck"
+                                // title ="view deck"
                                 style={styles.cardBtn}
                             >
-                            </Button>
+                            <Text style={styles.btnTxt}>View Deck</Text>
+                            </TouchableOpacity>
                         </View>
                     )
                 })}
@@ -56,29 +58,48 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: nile,
+        backgroundColor: lightGreen,
         margin: 8,
-        
         height: 200,
         borderRadius: 10,
-        shadowColor: '#C7C7A9',
+        shadowColor: offWhite,
+        borderStyle: "solid",
+        borderWidth: 2,
+        borderColor: darkGreen,
         shadowOffset: {
-            width: 0,
+            width: 3,
             height: 3,
         },
-        shadowRadius: 4,
+        shadowRadius: 5,
         shadowOpacity: 1,
 
     },
     cardText: {
         fontSize: 18,
-        color: white,
+        color: offWhite,
+        marginBottom: 10,
+    },
+    cardHeader: {
+        fontSize: 24,
+        color: offWhite,
+        fontWeight: "bold",
+        fontStyle: 'italic',
+        marginBottom: 20,
     },
     cardBtn: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 18,
+        width: 150,
+        height: 50,
+        borderColor: offWhite,
+        padding: 10,
+        backgroundColor: offWhite,
+        borderRadius: 7,
+        overflow: 'hidden', 
+        marginTop: 10,
+    },
+    btnTxt: {
+        color: darkGreen,
+        fontSize: 24,
+        textAlign: 'center',
         
     }
 })

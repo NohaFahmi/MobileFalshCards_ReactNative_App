@@ -10,10 +10,9 @@ import { NavigationContainer } from '@react-navigation/native'
 import { setLocalNotification } from './utils/helpers'
 import reducer from './reducers'
 
-import TabNav from './components/TabNav';
 import StackNav from './components/StackNav';
 
-import {blue} from './utils/colors'
+import {darkGreen} from './utils/colors'
 
 
 const store = createStore(
@@ -46,7 +45,7 @@ export default class App extends Component {
         
         <NavigationContainer>
           <AppStatusBar 
-            backgroundColor={blue }
+            backgroundColor={darkGreen }
             barStyle='light-content'
           />
           <StackNav />

@@ -10,7 +10,7 @@ import TabNav from './TabNav';
 import Quiz from './Quiz';
 
 
-import {blue, nile, orange, yellow, white} from '../utils/colors'
+import {blue, nile, orange, yellow, white, lightGreen, beige, offWhite, red, darkGreen} from '../utils/colors'
 
 
 
@@ -25,47 +25,38 @@ export default function StackNav() {
             <Stack.Screen 
               name='Home'
               component={TabNav}
-              options={
-                {title: 'Decks'}
-                
-              }
+              options={{title: 'Decks'}}
             />
+            
   
             <Stack.Screen 
               name='DeckView'
               component={DeckView}
-              options={
-                {title: 'DeckView'},
-                {headerTintColor: white},
-                {headerStyle: {
-                  backgroundColor: nile
-                }}
-                }
+              options={{
+              title: 'Deck Details',
+              headerTintColor: red,
+              headerStyle: {backgroundColor: white}
+              }}
             />
 
             <Stack.Screen 
               name='AddCard'
               component={AddCard}
-              options={
-                {title: 'Add Card'}, 
-                {headerTintColor: white},
-                {headerStyle: {
-                  backgroundColor: blue
-                }}
-              } 
-
+              options={{
+              title: 'Add Card',
+              headerTintColor: white,
+              headerStyle: {backgroundColor: darkGreen}
+              }}
             />
 
             <Stack.Screen 
               name='Quiz'
               component={Quiz}
-              options={
-                {title: 'Quiz'}, 
-                {headerTintColor: white},
-                {headerStyle: {
-                  backgroundColor: blue
-                }}
-              } 
+              options={{
+              title: 'Quiz',
+              headerTintColor: white,
+              headerStyle: {backgroundColor: lightGreen}
+              }}
 
             />
           </Stack.Navigator>

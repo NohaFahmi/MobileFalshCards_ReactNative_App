@@ -3,8 +3,9 @@ import { StyleSheet, View, Text, Button, TextInput } from 'react-native'
 import {saveDeckTitle} from '../utils/api'
 import {addDeck} from '../actions/index'
 import { connect } from 'react-redux'
-import {orange, yellow, white} from '../utils/colors'
+import {orange, yellow, white, lightGreen, darkGreen} from '../utils/colors'
 import SubmitBtn from './SubmitBtns'
+import { lightBlue } from './../utils/colors';
 
 class AddDeck extends Component {
 
@@ -55,26 +56,25 @@ const styles = StyleSheet.create({
         height: 50,
         padding: 5,
         borderWidth: 1,
-        borderColor: orange,
+        borderColor: lightBlue,
         margin: 50,
         borderRadius: 10,
     },
     title: {
         fontSize: 30,
-        color: orange,
+        color: lightGreen,
         fontWeight: '700',
         textAlign: 'center'
     },
     submitBtn: {
         borderWidth: 1,
-        borderColor: orange,
-        width: 80,
+        borderColor: darkGreen,
+        width: 150,
         padding: 10,
         borderRadius: 7,
         overflow: 'hidden',
         color: white,
-        backgroundColor: orange,
-        // backgroundColor: yellow,
+        backgroundColor: darkGreen,
     }
 })
 

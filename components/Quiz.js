@@ -4,11 +4,9 @@ import { connect } from 'react-redux'
 import {
     StyleSheet, 
     Text, 
-    View, 
-    TouchableOpacity, 
-    KeyboardAvoidingView
+    View,
 } from 'react-native';
-import { white, orange, yellow, blue, nile } from '../utils/colors'
+import { white, orange, yellow, blue, nile, lightOrange, beige, red, light, lightGreen, darkGreen, offWhite, dark } from '../utils/colors'
 import ActionBtn from './ActionBtns'
 import QuizInfo from './QuizInfo'
 
@@ -89,18 +87,18 @@ class Quiz extends Component {
                             : 
                             <Text style={{fontSize: 90}}>😭😭😭</Text>
                         }
-                        <View>
+                        <View style={{marginTop: 40}}>
                             <ActionBtn 
                                 styles={styles} 
-                                text={'StartOver'} 
-                                color={nile}
+                                text={'Start Over'} 
+                                color={lightGreen}
                                 onPress={this.startOver}
 
                             />
                             <ActionBtn 
                                 styles={styles} 
                                 text={'Back'} 
-                                color={blue}
+                                color={dark}
                                 onPress={this.goBack}
 
                             />
@@ -121,7 +119,7 @@ class Quiz extends Component {
                             {decks[deck].questions[questionNum].question}
                         </Text>
                         : 
-                        <Text style={styles.mainTitle}>
+                        <Text style={styles.answers}>
                             {decks[deck].questions[questionNum].answer}
                         </Text>
                     
@@ -136,8 +134,8 @@ class Quiz extends Component {
                         
                     }
                     <View>
-                    <ActionBtn text={'Correct'} styles={styles} onPress={() => this.submitAns('true')} />
-                    <ActionBtn text={'Incorrect'} styles={styles} onPress={() => this.submitAns('false')} />
+                    <ActionBtn text={'Correct'} styles={styles} color={lightGreen} onPress={() => this.submitAns('true')} />
+                    <ActionBtn text={'Incorrect'} color={lightOrange} styles={styles} onPress={() => this.submitAns('false')} />
                     </View>
                     
                 </View>
@@ -150,6 +148,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
+        backgroundColor: lightGreen,
         
     },
     card: {
@@ -157,7 +156,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         margin: 10,
-        backgroundColor: nile,
+        backgroundColor: white,
         alignSelf: 'stretch',
         borderRadius: 10,
         shadowColor: 'grey',
@@ -172,12 +171,13 @@ const styles = StyleSheet.create({
     btn: {
         padding: 10,
         borderRadius: 7,
-        height: 45,
-        margin: 5,
-        width: 100,
+        height: 55,
+        margin: 10,
+        width: 150,
+        
     },
     submitBtnTxt: {
-        color: white,
+        color: offWhite,
         fontSize: 26,
         textAlign: 'center'
     },
@@ -185,23 +185,33 @@ const styles = StyleSheet.create({
         top: 0,
         alignSelf: 'flex-start',
         left: 0,
-        color: white,
+        color: darkGreen,
+        fontStyle: 'italic',
+        fontWeight: 'bold',
         fontSize: 20,
         margin: 5,
         position: 'absolute',
     },
     answer: {
-        color: white,
-        fontSize: 20,
+        color: red,
+        fontWeight: 'bold',
+        fontSize: 24,
         margin: 20
     },
     mainTitle: {
         fontSize: 40,
-        color: white,
-        marginTop: 40,
+        color: red,
+        fontWeight: 'bold',
+        fontStyle: 'italic',
+        marginTop: -120,
         textAlign: 'center'
     },
-    
+    answers: {
+        fontSize: 26,
+        padding: 10,
+        textAlign: "center",
+        color: red,
+    }
 })
 
 function mapStateToProps(decks) {

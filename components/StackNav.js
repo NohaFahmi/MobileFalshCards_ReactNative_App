@@ -27,8 +27,7 @@ export default function StackNav() {
               component={TabNav}
               options={{title: 'Decks'}}
             />
-            
-  
+          
             <Stack.Screen 
               name='DeckView'
               component={DeckView}

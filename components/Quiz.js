@@ -6,7 +6,7 @@ import {
     Text, 
     View,
 } from 'react-native';
-import { white, orange, yellow, blue, nile, lightOrange, beige, red, light, lightGreen, darkGreen, offWhite, dark } from '../utils/colors'
+import { white, lightOrange, lightBlue, red, lightGreen, darkGreen, offWhite, dark } from '../utils/colors'
 import ActionBtn from './ActionBtns'
 import QuizInfo from './QuizInfo'
 
@@ -73,19 +73,21 @@ class Quiz extends Component {
         
 
         if(questionNum === decks[deck].questions.length) {
+            const percent = ((this.state.correct / decks[deck].questions.length) * 100).toFixed(0);
             return (
                 <View style={styles.container}  >
                     <View style={styles.card}>
                       <View>
                         <Text style={styles.mainTitle}> You Got {this.state.correct} out of {decks[deck].questions.length}! </Text>
+                        <Text style={{fontSize: 24, textAlign: 'center', color: dark, fontWeight: 'bold'}}> percentage Result: {percent}% </Text>
                       </View>
                         
 
                         {
                             this.state.correct > this.state.incorrect ? 
-                            <Text style={{fontSize: 90}}>👏👏👏</Text>
+                            <Text style={{fontSize: 90}}>👏 👏 👏</Text>
                             : 
-                            <Text style={{fontSize: 90}}>😭😭😭</Text>
+                            <Text style={{fontSize: 90}}>😥 😥 😥</Text>
                         }
                         <View style={{marginTop: 40}}>
                             <ActionBtn 

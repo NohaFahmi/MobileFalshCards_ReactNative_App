@@ -8,7 +8,7 @@ It uses React Native, Expo, Redux, & React Navigation.
 This app is the third of three projects required for [Udacity's React Nanodegree program](https://www.udacity.com/course/react-nanodegree--nd019).
 
 ## Application Screenshots
-![DeckList](assets\DecksList.png)]
+![DeckList](assets/DecksList.png)]
 ## Installation
 
 Clone the repository, change directories, and use npm or yarn to install the dependencies.
